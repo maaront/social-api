@@ -9,7 +9,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(routes);
 
-db.on('error', console.error.bind(console, 'Connection Error:'));
+db.on('error', console.error.bind(console, 'Connection error:'));
 db.once('open', () => {
     app.listen(PORT, () => {
       console.log(`Server Running on Port ${PORT}`);
