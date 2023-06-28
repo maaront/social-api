@@ -9,7 +9,7 @@ const userController = {
             res.json(dbThoughtData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to get all thoughts', details: err.message });
+            res.status(500).json({ error: 'Error getting all thoughts', details: err.message });
         }
     },
     createThought: async (req, res) => {
