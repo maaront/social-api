@@ -72,7 +72,10 @@ const thoughtSeed = [
 
 
 
-module.exports = userSeed;
+    module.exports = {
+        userSeed,
+        thoughtSeed
+      };
 
 
 

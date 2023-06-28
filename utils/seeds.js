@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const { User, Thought } = require('./../models');
+const { user, thought } = require('./../models');
 const { userSeed, thoughtSeed } = require('./data');
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-api', {
@@ -8,15 +8,15 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/social-api', {
 });
 
 async function seedDB() {
-    User.deleteMany({})
-    .then(() => User.collection.insertMany(userSeed))
+    user.deleteMany({})
+    .then(() => user.collection.insertMany(userSeed))
     .then(data => {
-        console.log(data.insertedCount + " records inserted!");
+        console.log(data.insertedCount + " users seeded");
     })
-    .then(() => Thought.deleteMany({}))
-    .then(() => Thought.collection.insertMany(thoughtSeed))
+    .then(() => thought.deleteMany({}))
+    .then(() => thought.collection.insertMany(thoughtSeed))
     .then(data => {
-        console.log(data.insertedCount + " records inserted!");
+        console.log(data.insertedCount + " thoughts seeded");
         process.exit(0);
     })
     .catch(err => {
@@ -24,3 +24,5 @@ async function seedDB() {
         process.exit(1);
     });
 }
+
+seedDB();
