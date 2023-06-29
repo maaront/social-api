@@ -8,7 +8,7 @@ const userController = {
             res.json(dbUserData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to get all users', details: err.message });
+            res.status(500).json({ error: 'Error getting all users', details: err.message });
         }
     },
 
@@ -19,7 +19,7 @@ const userController = {
 
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to create a user', details: err.message });
+            res.status(500).json({ error: 'Error creating a user', details: err.message });
         }
     },
 
@@ -34,7 +34,7 @@ const userController = {
             res.json(dbUserData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to get a user by id', details: err.message });
+            res.status(500).json({ error: 'Error getting a user by id', details: err.message });
         }
     },
 
@@ -47,14 +47,14 @@ const userController = {
             );
 
             if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id!' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
 
             res.json(dbUserData);
         } catch (err) {
                 console.error(err);
-                res.status(500).json({ error: 'An error occurred while trying to update a user', details: err.message });
+                res.status(500).json({ error: 'Error updating user', details: err.message });
             }
     },
 
@@ -64,17 +64,17 @@ const userController = {
             const dbUserData = await User.findOneAndDelete({ _id: req.params.id });
 
             if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id!' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
 
-            // After deleting the user, delete their thoughts
+            // After deleting the user, delete their thoughts.
             await Thought.deleteMany({ userId: req.params.id });
 
-            res.send(`${dbUserData.username} and associated thoughts deleted successfully!`);
+            res.send(`${dbUserData.username} and associated thoughts deleted`);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to delete the user and associated thoughts', details: err.message });
+            res.status(500).json({ error: 'Error deleting the user and associated thoughts', details: err.message });
         }
     },
 
@@ -84,7 +84,7 @@ const userController = {
             const dbUserData = await User.findById(req.params.id);
 
             if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id!' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
 
@@ -94,7 +94,7 @@ const userController = {
             res.json(dbUserData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to add a friend', details: err.message });
+            res.status(500).json({ error: 'Error adding a friend', details: err.message });
         }
     },
 
@@ -102,7 +102,7 @@ const userController = {
         try {
             const dbUserData = await User.findById(req.params.id);
             if (!dbUserData) {
-                res.status(404).json({ message: 'No user found with this id!' });
+                res.status(404).json({ message: 'No user found with this id' });
                 return;
             }
 
@@ -111,7 +111,7 @@ const userController = {
             res.json(dbUserData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to remove a friend', details: err.message });
+            res.status(500).json({ error: 'Error removing a friend', details: err.message });
         }
     }
 };

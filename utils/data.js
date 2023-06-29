@@ -1,25 +1,45 @@
 const userSeed = [
     {  
         username: 'Bob Marley',
-        email: 'bmarley@mail.com'
+        email: 'bmarley@mail.com',
+        thoughts: [
+            "649ddb24ff9c4fef61629d26",
+         ],
+        friends: [
+        ]
     },
     {
         username: 'Gloria Gaynor',
-        email: 'ggaynor@mail.com'
+        email: 'ggaynor@mail.com',
+        thoughts: [
+            "649ddcafed9f191a39c0df52"
+        ],
+        friends: [
+        ]
     },
     {
         username: 'Louis Armstrong',
-        email: 'larmstrong@mail.com'
+        email: 'larmstrong@mail.com',
+        thoughts: [
+            "649ddcafed9f191a39c0df51"
+        ],
+        friends: [
+        ]
     },
     {
         username: 'John Lennon',
-        email: 'jlennon@mail.com'
+        email: 'jlennon@mail.com',
+        thoughts: [
+            "649ddcafed9f191a39c0df53"
+        ],
+        friends: [
+        ]
     }
 ];
 
 const thoughtSeed = [
     {
-        thoughtText: 'Every little thing gonna be alright.',
+        thoughtText: 'Every little thing is gonna be alright.',
         username: 'Bob Marley',
         reactions: [ {
             reactionBody: "Don't worry, be happy!",

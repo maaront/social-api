@@ -32,7 +32,7 @@ const userController = {
 
           res.status(200).json(dbThoughtData);
         } catch (err) {
-          res.status(500).json({ error: 'An error occurred while trying to create a thought', details: err.message });
+          res.status(500).json({ error: 'Error creating a thought', details: err.message });
         }
       },
 
@@ -47,12 +47,12 @@ const userController = {
           );
 
           if (!updatedThought) {
-            return res.status(404).json({ message: 'No thought with this id!' });
+            return res.status(404).json({ message: 'No thought with this id' });
           }
 
           res.json(updatedThought);
         } catch (err) {
-          res.status(500).json({ error: 'An error occurred while trying to update a thought', details: err.message });
+          res.status(500).json({ error: 'Error updating a thought', details: err.message });
         }
       },
 
@@ -61,13 +61,13 @@ const userController = {
             const dbThoughtData = await Thought.findById(req.params.id);
 
             if (!dbThoughtData) {
-                return res.status(404).json({ message: 'No thought with this id!' });
+                return res.status(404).json({ message: 'No thought with this id' });
             }
 
             res.json(dbThoughtData);
         } catch (err) {
             console.error(err);
-            res.status(500).json({ error: 'An error occurred while trying to get a thought by id', details: err.message });
+            res.status(500).json({ error: 'Error getting a thought by id', details: err.message });
         }
 
         },
@@ -76,13 +76,13 @@ const userController = {
             try {
                 const dbThoughtData = await Thought.findByIdAndDelete(req.params.id);
                 if (!dbThoughtData) {
-                    return res.status(404).json({ message: 'No thought with this id!' });
+                    return res.status(404).json({ message: 'No thought with this id' });
                     return;
                 }
-                res.send(`Thought ${req.params.id} deleted!`);
+                res.send(`Thought ${req.params.id} deleted`);
             } catch (err) {
                 console.error(err);
-                res.status(500).json({ error: 'An error occurred while trying to delete a thought', details: err.message });
+                res.status(500).json({ error: 'Error deleting a thought', details: err.message });
             }
 
         },
@@ -98,13 +98,13 @@ const userController = {
                 );
 
                 if (!updatedThought) {
-                    return res.status(404).json({ message: 'No thought with this id!' });
+                    return res.status(404).json({ message: 'No thought with this id' });
                 }
 
                 res.json(updatedThought);
             } catch (err) {
                 console.error(err);
-                res.status(500).json({ error: 'An error occurred while trying to add a reaction', details: err.message });
+                res.status(500).json({ error: 'Error adding a reaction', details: err.message });
             }
         },
         removeReaction : async (req, res) => {
@@ -116,13 +116,13 @@ const userController = {
                 );
 
                 if (!updatedThought) {
-                    return res.status(404).json({ message: 'No thought with this id!' });
+                    return res.status(404).json({ message: 'No thought with this id' });
                 }
 
                 res.json(updatedThought);
             } catch (err) {
                 console.error(err);
-                res.status(500).json({ error: 'An error occurred while trying to remove a reaction', details: err.message });
+                res.status(500).json({ error: 'Error removing a reaction', details: err.message });
             }
         },
 
